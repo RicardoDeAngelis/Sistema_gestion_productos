@@ -10,6 +10,7 @@ private String username;
 private String pass;
 private final String name="ricardo";
 private final String password="ricardo";
+private static Conexion conec;
 
     public String getUrl() {
         return url;
@@ -38,41 +39,44 @@ private final String password="ricardo";
    
     
     
-    
-    public Conexion() {
+   
+    private Conexion() {
     }
 
-    
-    
-public  void ConectarDB (){
-    
+    public static Conexion getSingletonInstancie(){
+    if(conec==null){
+    conec= new Conexion();
+    }
+    else{
+        JOptionPane.showMessageDialog(null, "No se permiten mas conexiones a la DB");
+        System.out.println("No se permiten mas concexiones");
+    }
+    return(conec);
+    }
     
 
- do{
-    
-  username= JOptionPane.showInputDialog("Ingresa el nombre de usuario");   
-  pass=JOptionPane.showInputDialog("Ingresa la la contraseña");    
-     
 
-     }while(pass.compareTo(password) != username.compareTo(name));   
- 
-          url= "jdbc:derby://localhost:1527/Almacen";
- try {
+    public void ConectarDB() {
+        do{
+            
+            username= JOptionPane.showInputDialog("Ingresa el nombre de usuario");
+            pass=JOptionPane.showInputDialog("Ingresa la la contraseña");
+            
+            
+        }while(pass.compareTo(password) != username.compareTo(name));
+        
+        url= "jdbc:derby://localhost:1527/Almacen";
+        try {
             Class.forName("org.apache.derby.jdbc.ClientDriver");
             JOptionPane.showMessageDialog(null, "Conexion exitosaa DB Almacen");
             //System.out.println("Conexion Exitosa");
         } catch (ClassNotFoundException e) {
             // System.out.println("Exception creating connection: " + e);
-              JOptionPane.showMessageDialog(null,"Error al conectar" +e );
-           System.exit(0);
-       
+            JOptionPane.showMessageDialog(null,"Error al conectar" +e );
+            System.exit(0);
+            
         }
-
-   
-        
-      
-
-  }
+    }
     
         
 }

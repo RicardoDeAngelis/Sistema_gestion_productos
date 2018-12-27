@@ -9,7 +9,7 @@ public class Main {
 
         String opcion ;
         
-        Conexion con = new Conexion();
+        Conexion con =  Conexion.getSingletonInstancie();
          try{
         con.ConectarDB();
          }catch(Exception  e){
