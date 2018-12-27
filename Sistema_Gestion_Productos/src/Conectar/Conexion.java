@@ -48,8 +48,8 @@ private static Conexion conec;
     conec= new Conexion();
     }
     else{
-        JOptionPane.showMessageDialog(null, "No se permiten mas conexiones a la DB");
-        System.out.println("No se permiten mas concexiones");
+        JOptionPane.showMessageDialog(null, "No se permiten mas conexiones a la DB,singleton funciona ");
+        System.out.println("No se permiten mas conexiones");
     }
     return(conec);
     }

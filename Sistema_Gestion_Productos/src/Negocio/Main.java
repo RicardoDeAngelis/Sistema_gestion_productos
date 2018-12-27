@@ -10,6 +10,7 @@ public class Main {
         String opcion ;
         
         Conexion con =  Conexion.getSingletonInstancie();
+        Conexion con2=Conexion.getSingletonInstancie();
          try{
         con.ConectarDB();
          }catch(Exception  e){
