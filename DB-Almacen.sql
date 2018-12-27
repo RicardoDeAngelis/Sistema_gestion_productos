@@ -2,7 +2,7 @@
 --name ricardo-
 --pass ricardo
 
-drop table categoria;
+--drop table categoria;
 create table categoria  (
    	 
    	codigo_categoria VARCHAR(50) NOT NULL, 
@@ -10,9 +10,9 @@ create table categoria  (
 	PRIMARY KEY (codigo_categoria)
 );
 
-truncate table categoria; 
+--truncate table categoria; 
 
-drop table bebidas;
+--drop table bebidas;
 create table bebidas  (
  
        codigo_bebida varchar(50)not null,       
@@ -26,18 +26,18 @@ create table bebidas  (
         codigo_categoria varchar(50) not null,
          PRIMARY KEY (codigo_bebida)
 );
-truncate table bebidas; 
+--truncate table bebidas; 
 alter table bebidas
       add foreign key (codigo_categoria)
        references categoria (codigo_categoria)
 ;
 
-SELECT precio_final FROM bebidas where codigo_categoria ='1';
+--SELECT precio_final FROM bebidas where codigo_categoria ='1';
 
 
 
 
-drop table cierre;
+--drop table cierre;
 create table cierre  (
    	
         numero_venta Integer  generated always as identity(start with 1,increment by 1) ,
@@ -52,17 +52,17 @@ create view vista_categoria_produc as
 select b.descripcion_bebida, c.descripcion_categoria
  from bebidas AS b inner join categoria AS c
  on c.codigo_categoria = b.codigo_categoria ;
-and c.codigo_categoria = '1';
+--and c.codigo_categoria = '1';
 
-create view vista_categoria_prod as
-select b.descripcion_bebida, c.descripcion_categoria
- from bebidas AS b inner join categoria AS c
- on c.codigo_categoria = b.codigo_categoria ;
+--create view vista_categoria_prod as
+--select b.descripcion_bebida, c.descripcion_categoria
+ --from bebidas AS b inner join categoria AS c
+ --on c.codigo_categoria = b.codigo_categoria ;
 
  
 
 
-select*from vista_categoria_prod;
+select*from vista_categoria_produc;
 select*from categoria;
 select*from bebidas;
 
